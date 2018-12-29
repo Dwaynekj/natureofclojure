@@ -11,11 +11,11 @@
 (def WIDTH 800)
 (def HEIGHT 600)
 
-(def walker (atom {:x (/ WIDTH 2.0)
-                   :y (/ HEIGHT 2.0)}))
+(def walker (atom {:x (/ WIDTH 10.0)
+                   :y (/ HEIGHT 10.0)}))
 
 (defn render-walker [w]
-  (qc/stroke 0)
+  (qc/stroke 230 100 100)
   (qc/point (:x w) (:y w)))
 
 (defn step-walker [w-atom]
@@ -24,13 +24,4 @@
           (= choice 1) (swap! w-atom update-in [:x] #(qc/constrain-float (- % 1) 0 WIDTH))
           (= choice 2) (swap! w-atom update-in [:y] #(qc/constrain-float (+ % 1) 0 HEIGHT))
           (= choice 3) (swap! w-atom update-in [:y] #(qc/constrain-float (- % 1) 0 HEIGHT)))))
-
-
-
-
-
-
-
-
-
 
